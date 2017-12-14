@@ -9,10 +9,22 @@ import java.util.Map;
 
 public class Log implements Command {
 
+    //  @In(type = RType.STACK)
+    //  private Stack<Double> stack;
+
+    //   STACK, DEFINITIION, ARGUMENT;
+
     @In(type = RType.STACK)
     private Stack<Double> stack;
+    @In(type = RType.DEFINITION)
+    private Map<String, Double> define;
+    @In(type = RType.ARGUMENT)
+    private String[] arg;
 
-    public void execute(Stack<Double> stack, Map<String, Double> define, String[] s){
+    @Override
+    public void execute(
+          //  Stack<Double> stack, Map<String, Double> define, String[] s
+    ){
 
         if (stack.size() < 1){
             System.out.println("Невозможно выполнить команду! Стек должен содержать не менее одного элемента!");

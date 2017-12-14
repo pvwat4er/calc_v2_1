@@ -5,5 +5,7 @@ import java.util.Map;
 
 public interface Command {
 
-    public abstract void execute(Stack<Double> stack, Map<String, Double> define, String[] s);
+    public abstract void execute(
+            //Stack<Double> stack, Map<String, Double> define, String[] s
+    );
 }

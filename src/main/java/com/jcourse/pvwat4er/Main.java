@@ -45,7 +45,9 @@ public class Main {
 
             if (kom != null){
                 try{
-                    kom.execute(stack, varMap, str);
+                    kom.execute(
+                            //stack, varMap, str
+                    );
                 }catch (NumberFormatException e){
                     System.out.println("Введена неизвестная команда");
                 }

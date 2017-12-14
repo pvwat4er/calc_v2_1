@@ -10,10 +10,22 @@ import java.util.Stack;
 
 public class Note implements Command {
 
+    //  @In(type = RType.STACK)
+    //  private Stack<Double> stack;
+
+    //   STACK, DEFINITIION, ARGUMENT;
+
     @In(type = RType.STACK)
     private Stack<Double> stack;
+    @In(type = RType.DEFINITION)
+    private Map<String, Double> define;
+    @In(type = RType.ARGUMENT)
+    private String[] arg;
 
-    public void execute(Stack<Double> stack, Map<String, Double> define, String[] s) {
+    @Override
+    public void execute(
+           // Stack<Double> stack, Map<String, Double> define, String[] s
+    ) {
         System.out.println("comment");
     }
 }
