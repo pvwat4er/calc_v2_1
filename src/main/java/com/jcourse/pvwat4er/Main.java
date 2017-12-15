@@ -13,48 +13,27 @@ import java.util.concurrent.atomic.AtomicInteger;
 import static java.lang.Class.*;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException, ClassNotFoundException {
-        Scanner scanner;
-        String s;
-        Stack<Double> stack = new Stack();
+    public static void main(String[] args) throws FileNotFoundException, IllegalAccessException, InstantiationException, ClassNotFoundException {
 
-        if (args.length > 0) {
-            scanner = new Scanner(new FileInputStream(args[0]));
-        } else {
-            scanner = new Scanner(System.in);
-        }
+        Scanner scanner = new Scanner(System.in);
+        String string;
+        CommandsFactory  commandFactory = new CommandsFactory ();
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
+        while (scanner.hasNextLine()) {
+            string = scanner.nextLine();
 
-        Map<String, Double> varMap = new HashMap<>();
+            String[] strings = string.split(" ");
+            Command com = commandFactory.getCommand(strings);
 
-        CommandsFactory singleton = CommandsFactory.getInst();
-
-
-        while ( scanner.hasNextLine() ) {
-
-            s = scanner.nextLine();
-
-            String[] str = s.split(" ");
-
-            String s0 = str[0];
-
-            //   CommFactory singleton = CommFactory.getInstance();
-
-            Command kom = singleton.getCommandByName(s0);
-
-
-            if (kom != null){
-                try{
-                    kom.execute(
-                            //stack, varMap, str
-                    );
-                }catch (NumberFormatException e){
-                    System.out.println("Введена неизвестная команда");
+            if (com != null) {
+                try {com.execute();
+                } catch (NumberFormatException e) {System.out.println("Введена не известная команда");
                 }
+
             }
-            else{
-                System.out.println("Команда не определена");
-            }
+
         }
+
     }
 }
