@@ -21,6 +21,7 @@ public class Main {
         BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
 
         while (scanner.hasNextLine()) {
+
             string = scanner.nextLine();
 
             String[] strings = string.split(" ");

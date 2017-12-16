@@ -1,5 +1,7 @@
 package com.jcourse.pvwat4er;
 
+import com.jcourse.pvwat4er.commands.ProxyCommand;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
@@ -9,6 +11,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.*;
+
+import static java.lang.Compiler.command;
 
 
 public class CommandsFactory {
@@ -43,12 +47,18 @@ public class CommandsFactory {
 
             //annottions
             for (Field field : declaredFields) {
+
+
+
                 In annotation = field.getAnnotation(In.class);
+
 
                 if (annotation != null) {
 
+                    field.setAccessible(true);
                     if (annotation.type() == RType.STACK) {
                         field.set(o, stack);
+
 
                     } else if (annotation.type() == RType.DEFINITION) {
                         field.set(o, define);
@@ -69,8 +79,14 @@ public class CommandsFactory {
             e.getMessage();
             System.out.println("Команда не определена!");
         }
+
+        ProxyCommand proxyCommand = new ProxyCommand(command);
+
+     //   Foo f = (Foo) Proxy.newProxyInstance(Foo.class.getClassLoader(), new Class[] { Foo.class }, handler);
+
         return command;
     }
+
 }
 
 
