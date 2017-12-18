@@ -9,22 +9,15 @@ import java.util.Map;
 
 public class Plus implements Command {
 
-    //  @In(type = RType.STACK)
-    //  private Stack<Double> stack;
-
-    //   STACK, DEFINITIION, ARGUMENT;
-
     @In(type = RType.STACK)
-    private Stack<Double> stack;
+    public Stack<Double> stack;
     @In(type = RType.DEFINITION)
-    private Map<String, Double> define;
+    public Map<String, Double> define;
     @In(type = RType.ARGUMENT)
-    private String[] arg;
+    public String[] arg;
 
     @Override
-    public void execute(
-          //  Stack<Double> stack, Map<String, Double> define, String[] s
-    ) {
+    public void execute() {
 
         if (stack.size() < 2) {
             System.out.println("Невозможно выполнить команду! Стек должен содержать более одного элемента!");
