@@ -1,18 +1,13 @@
 package com.jcourse.pvwat4er;
 
-import com.jcourse.pvwat4er.commands.ProxyCommand;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.lang.reflect.Field;
-import java.lang.reflect.Constructor;
-import java.io.PrintWriter;
+import java.lang.reflect.Proxy;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.*;
-
-import static java.lang.Compiler.command;
 
 
 public class CommandsFactory {
@@ -73,18 +68,24 @@ public class CommandsFactory {
             e.printStackTrace();
         } catch (InstantiationException e) {
             e.printStackTrace();
+
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
+
         } catch (NullPointerException e) {
             e.getMessage();
             System.out.println("Команда не определена!");
         }
 
-        ProxyCommand proxyCommand = new ProxyCommand(command);
-
-     //   Foo f = (Foo) Proxy.newProxyInstance(Foo.class.getClassLoader(), new Class[] { Foo.class }, handler);
-
         return command;
+    }
+
+    public Command getProxy(String[] calledCommand) throws MyException {
+
+        Command userProxy = (Command) Proxy.newProxyInstance(Command.class.getClassLoader(), new Class[]{Command.class}, new CommandHandler(getCommand(calledCommand)));
+        userProxy.execute();
+
+        return userProxy;
     }
 
 }

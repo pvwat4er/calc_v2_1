@@ -17,21 +17,26 @@ public class Main {
 
         Scanner scanner = new Scanner(System.in);
         String string;
-        CommandsFactory  commandFactory = new CommandsFactory ();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        CommandsFactory commandFactory = new CommandsFactory ();
 
         while (scanner.hasNextLine()) {
 
             string = scanner.nextLine();
 
             String[] strings = string.split(" ");
-            Command com = commandFactory.getCommand(strings);
+          //  Command com = commandFactory.getCommand(strings);
 
-            if (com != null) {
-                try {com.execute();
-                } catch (NumberFormatException e) {System.out.println("Введена не известная команда");
-                }
+          //  if (com != null) {
+          //      try {com.execute();
+          //      } catch (NumberFormatException e) {System.out.println("Введена не известная команда");
+          //      }
 
+         //   }
+
+            try {
+                commandFactory.getProxy(strings);
+            } catch (MyException e) {
+                e.printStackTrace();
             }
 
         }
