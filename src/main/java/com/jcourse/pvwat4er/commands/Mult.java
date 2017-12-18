@@ -9,12 +9,12 @@ import java.util.Map;
 
 public class Mult implements Command {
 
-   @In(type = RType.STACK)
-   public Stack<Double> stack;
+    @In(type = RType.STACK)
+    private Stack<Double> stack;
     @In(type = RType.DEFINITION)
-    public Map<String, Double> define;
+    private Map<String, Double> define;
     @In(type = RType.ARGUMENT)
-    public String[] arg;
+    private String[] arg;
 
     @Override
     public void execute() {
