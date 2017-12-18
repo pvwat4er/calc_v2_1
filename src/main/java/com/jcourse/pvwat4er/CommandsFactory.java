@@ -31,7 +31,7 @@ public class CommandsFactory {
     public Command getCommand(String[] calledCommand) {
 
         arg = calledCommand;
-        String prop = properties.getProperty(arg[0]);
+        String prop = properties.getProperty(arg[0].toUpperCase());
         Command command = null;
 
         try {
