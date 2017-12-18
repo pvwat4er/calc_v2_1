@@ -24,14 +24,14 @@ public class Main {
             string = scanner.nextLine();
 
             String[] strings = string.split(" ");
-          //  Command com = commandFactory.getCommand(strings);
+            //  Command com = commandFactory.getCommand(strings);
 
-          //  if (com != null) {
-          //      try {com.execute();
-          //      } catch (NumberFormatException e) {System.out.println("Введена не известная команда");
-          //      }
+            //  if (com != null) {
+            //      try {com.execute();
+            //      } catch (NumberFormatException e) {System.out.println("Введена не известная команда");
+            //      }
 
-         //   }
+            //   }
 
             try {
                 commandFactory.getProxy(strings);
